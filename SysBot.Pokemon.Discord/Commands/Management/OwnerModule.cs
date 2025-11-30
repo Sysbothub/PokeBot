@@ -59,7 +59,7 @@ public class OwnerModule<T> : SudoModule<T> where T : PKM, new()
     [Command("blacklistserver")]
     [Alias("bls")]
     [Summary("Adds a server ID to the bot's server blacklist.")]
-    [RequireOwner]
+    [RequireSudo]
     public async Task BlacklistServer(ulong serverId)
     {
         var settings = SysCord<T>.Runner.Hub.Config.Discord;
@@ -88,7 +88,7 @@ public class OwnerModule<T> : SudoModule<T> where T : PKM, new()
     [Command("unblacklistserver")]
     [Alias("ubls")]
     [Summary("Removes a server ID from the bot's server blacklist.")]
-    [RequireOwner]
+    [RequireSudo]
     public async Task UnblacklistServer(ulong serverId)
     {
         var settings = SysCord<T>.Runner.Hub.Config.Discord;
@@ -135,7 +135,7 @@ public class OwnerModule<T> : SudoModule<T> where T : PKM, new()
 
     [Command("addChannel")]
     [Summary("Adds a channel to the list of channels that are accepting commands.")]
-    [RequireOwner]
+    [RequireSudo]
     public async Task AddChannel()
     {
         var obj = GetReference(Context.Message.Channel);
@@ -175,7 +175,7 @@ public class OwnerModule<T> : SudoModule<T> where T : PKM, new()
 
     [Command("removeChannel")]
     [Summary("Removes a channel from the list of channels that are accepting commands.")]
-    [RequireOwner]
+    [RequireSudo]
     public async Task RemoveChannel()
     {
         var obj = GetReference(Context.Message.Channel);
@@ -196,7 +196,7 @@ public class OwnerModule<T> : SudoModule<T> where T : PKM, new()
     [Command("leaveguild")]
     [Alias("lg")]
     [Summary("Leaves guild based on supplied ID.")]
-    [RequireOwner]
+    [RequireSudo]
     public async Task LeaveGuild(string userInput)
     {
         if (!ulong.TryParse(userInput, out ulong id))
@@ -396,7 +396,7 @@ public class OwnerModule<T> : SudoModule<T> where T : PKM, new()
 
     [Command("dm")]
     [Summary("Sends a direct message to a specified user.")]
-    [RequireOwner]
+    [RequireSudo]
     public async Task DMUserAsync(SocketUser user, [Remainder] string message)
     {
         var attachments = Context.Message.Attachments;
@@ -404,7 +404,7 @@ public class OwnerModule<T> : SudoModule<T> where T : PKM, new()
 
         var embed = new EmbedBuilder
         {
-            Title = "Private Message from the Bot Owner",
+            Title = "Private Message from Professor Mable",
             Description = message,
             Color = (DiscordColor?)Color.Gold,
             Timestamp = DateTimeOffset.Now,
